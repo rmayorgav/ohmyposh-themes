@@ -1,0 +1,81 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "version": 2,
+  "final_space": true,
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      
+      "segments": [
+        {
+          "type": "session",
+          "style": "powerline",
+          "foreground": "black",
+          "background": "lightGreen",
+          "powerline_symbol": "",
+          "template": " {{ .UserName }} ",
+          "properties": {}
+        },
+        {
+          "type": "shell",
+          "style": "powerline",
+          "background": "cyan",
+          "foreground": "black",
+          "powerline_symbol": "",
+          "template": " {{ .Name }} ",
+          "properties": {
+            "mapped_shell_names": {}
+          }
+        },
+        {
+          "type": "path",
+          "style": "powerline",
+          "background": "white",
+          "foreground": "black",
+          "powerline_symbol": "",
+          "properties": {
+            "style": "agnoster_short"
+          }
+        },
+        {
+          "type": "git",
+          "style": "powerline",
+          "foreground": "black",
+          "background": "yellow",
+          "powerline_symbol": "",
+          "template": " {{ .HEAD }} {{if .BranchStatus }}{{ .BranchStatus }} {{ end }}{{ if .Working.Changed }}\uF044{{ .Working.String }}{{ end }}{{ if and (.Staging.Changed) (.Working.Changed) }}|{{ end }}{{ if .Staging.Changed }}\uF046{{ .Staging.String }}{{ end }}",
+          "properties": {
+            "branch_icon": "",
+            "fetch_status": true
+          }
+        },
+        {
+          "type": "executiontime",
+          "style": "powerline",
+          "powerline_symbol": "",
+          "foreground": "black",
+          "background": "green",
+          "template": " ({{.FormattedMs}}) ",
+          "properties": {
+            "always_enabled": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "style": "plain",
+          "type": "text",
+          "template": "$",
+          "foreground": "default",
+          "background": "default"
+        }
+      ]
+    }
+  ]
+}
