@@ -7,26 +7,20 @@
     {
       "type": "prompt",
       "alignment": "left",
-      "newline": true,
+      "newline": false,
       "segments": [
-        {
-          "type": "os",
-          "style": "plain",
-          "template": "{{.Icon}} ",
-          "properties": {}
-        },
         {
           "type": "session",
           "style": "plain",
           "foreground": "green",
-          "template": "{{ if .SSHSession }}\ueba9 {{ end }}{{ .UserName }}@{{ .HostName }} ",
+          "template": "[{{ if .SSHSession }}\ueba9 {{ end }}{{ .UserName }}@{{ .HostName }}] ",
           "properties": {}
         },
         {
           "type": "path",
           "style": "plain",
           "foreground": "default",
-          "template": "{{ .Path }} ",
+          "template": "[{{ .Path }}] ",
           "properties": {
             "style": "agnoster_short"
           }
@@ -35,7 +29,7 @@
           "type": "git",
           "style": "plain",
           "foreground": "magenta",
-          "template": "{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }} ",
+          "template": "[{{ .UpstreamIcon }}{{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }}  {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }}  {{ .Staging.String }}{{ end }}{{ if gt .StashCount 0 }}  {{ .StashCount }}{{ end }}] ",
           "properties": {
             "fetch_status": true
           }
@@ -57,10 +51,18 @@
       "newline": true,
       "segments": [
         {
+          "type": "os",
+          "style": "plain",
+          "template": "[{{.Icon}}] ",
+          "properties": {
+            "windows": "Windows"
+          }
+        },
+        {
           "type": "shell",
           "style": "plain",
           "foreground": "default",
-          "template": "{{ .Name }} ",
+          "template": "[{{ .Name }}] ",
           "properties": {
             "mapped_shell_names": {}
           }
